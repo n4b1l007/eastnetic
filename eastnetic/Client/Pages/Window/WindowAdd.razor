@@ -1,0 +1,79 @@
+﻿@page "/WindowAdd"
+@page "/Window/edit/{Id:int}"
+@using MudBlazor;
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+<h3>Window Add</h3>
+
+@using System.Text.RegularExpressions
+@using System.ComponentModel.DataAnnotations
+@using eastnetic.Shared.DTO;
+@using eastnetic.Shared.Model;
+@using static System.Net.WebRequestMethods;
+
+<MudCard>
+    <MudForm Model="@model" @ref="@form">
+        <MudCardContent>
+            <MudSelect @bind-Value="model.OrderId"
+                       For="@(() => model.OrderId)"
+                       T="int" Label="Order" AnchorOrigin="Origin.BottomCenter">
+                @foreach (OrderDto order in OrderList)
+                {
+                    <MudSelectItem Value="@order.Id">@order.Name</MudSelectItem>
+                }
+            </MudSelect>
+
+            <MudTextField @bind-Value="model.QuantityOfWindows"
+                          For="@(() => model.QuantityOfWindows)"
+                          Immediate="true"
+                          Label="Quantity Of Windows"
+                          Required="true"
+                          RequiredError="Quantity Of Windows State is required!" />
+        </MudCardContent>
+    </MudForm>
+    <MudCardActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(async () => await Submit())">Add Window</MudButton>
+    </MudCardActions>
+</MudCard>
+
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    protected string Title = "Add";
+    MudForm form;
+
+    WindowDto model = new WindowDto();
+    List<OrderDto> OrderList = new List<OrderDto>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        OrderList = await Http.GetFromJsonAsync<List<OrderDto>>("api/Order");
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id != 0)
+        {
+            Title = "Edit";
+            model = await Http.GetFromJsonAsync<WindowDto>("api/Window/" + Id);
+        }
+    }
+
+    private async Task Submit()
+    {
+        if (model.Id != 0)
+        {
+            await Http.PutAsJsonAsync("api/Window", model);
+        }
+        else
+        {
+            await Http.PostAsJsonAsync("api/Window", model);
+        }
+        //Cancel();
+    }
+    public void Cancel()
+    {
+        NavigationManager.NavigateTo("/Windows");
+    }
+}

@@ -1,17 +1,20 @@
 using eastnetic.Server.Interfaces;
 using eastnetic.Server.Models;
 using eastnetic.Server.Services;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddDbContext<DatabaseContext>
     (options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddTransient<IOrder, OrderManager>();
+builder.Services.AddTransient<IWindow, WindowManager>();
+builder.Services.AddTransient<ISubElement, SubElementManager>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 

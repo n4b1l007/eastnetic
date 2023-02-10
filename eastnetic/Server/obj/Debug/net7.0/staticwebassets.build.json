@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LnJyqcIcMdPJkw+QDOtIQ7DmlZvLXVNai8tq3raSzek=",
+  "Hash": "L/JOHD8+2Fajso7Y5WkeuBbaGIdILBGC6Oy+W3cKb/U=",
   "Source": "eastnetic.Server",
   "BasePath": "_content/eastnetic.Server",
   "Mode": "Default",
@@ -741,6 +741,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\7.0.2\\runtimes\\browser-wasm\\lib\\net7.0\\mscorlib.dll"
+    },
+    {
+      "Identity": "C:\\Nabil\\Personal\\eastnetic\\eastnetic\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\MudBlazor.dll",
+      "SourceId": "eastnetic.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Nabil\\Personal\\eastnetic\\eastnetic\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/MudBlazor.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\mudblazor\\6.1.8\\lib\\net7.0\\MudBlazor.dll"
     },
     {
       "Identity": "C:\\Nabil\\Personal\\eastnetic\\eastnetic\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\netstandard.dll",
@@ -3546,6 +3563,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Nabil\\Personal\\eastnetic\\eastnetic\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Text.Encoding.Extensions.dll"
+    },
+    {
+      "Identity": "C:\\Nabil\\Personal\\eastnetic\\eastnetic\\Client\\obj\\Debug\\net7.0\\build-gz\\+aSkJm6c.gz",
+      "SourceId": "eastnetic.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Nabil\\Personal\\eastnetic\\eastnetic\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/MudBlazor.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Nabil\\Personal\\eastnetic\\eastnetic\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\MudBlazor.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Nabil\\Personal\\eastnetic\\eastnetic\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\MudBlazor.dll"
     },
     {
       "Identity": "C:\\Nabil\\Personal\\eastnetic\\eastnetic\\Client\\obj\\Debug\\net7.0\\build-gz\\+HRsF+sw.gz",
@@ -7014,6 +7048,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\mudblazor\\6.1.8\\staticwebassets\\MudBlazor.min.css",
+      "SourceId": "MudBlazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\mudblazor\\6.1.8\\staticwebassets\\",
+      "BasePath": "_content/MudBlazor",
+      "RelativePath": "MudBlazor.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\mudblazor\\6.1.8\\staticwebassets\\MudBlazor.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\mudblazor\\6.1.8\\staticwebassets\\MudBlazor.min.js",
+      "SourceId": "MudBlazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\mudblazor\\6.1.8\\staticwebassets\\",
+      "BasePath": "_content/MudBlazor",
+      "RelativePath": "MudBlazor.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\mudblazor\\6.1.8\\staticwebassets\\MudBlazor.min.js"
     }
   ]
 }

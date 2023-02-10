@@ -4,13 +4,13 @@ namespace eastnetic.Server.Interfaces
 {
     public interface IOrder
     {
-        public List<Order> GetOrderDetails();
+        public List<OrderDto> GetOrderDetails();
 
-        public void AddOrder(Order Order);
+        public void AddOrder(OrderDto Order);
 
-        public void UpdateOrderDetails(Order Order);
+        public void UpdateOrderDetails(OrderDto Order);
 
-        public Order GetOrderData(int id);
+        public OrderDto GetOrderData(int id);
 
         public void DeleteOrder(int id);
     }

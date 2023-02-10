@@ -16,7 +16,7 @@ namespace eastnetic.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Order>> Get()
+        public async Task<List<OrderDto>> Get()
         {
             return await Task.FromResult(_IOrder.GetOrderDetails());
         }
@@ -24,7 +24,7 @@ namespace eastnetic.Server.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Order Order = _IOrder.GetOrderData(id);
+            OrderDto Order = _IOrder.GetOrderData(id);
             if (Order != null)
             {
                 return Ok(Order);
@@ -33,13 +33,13 @@ namespace eastnetic.Server.Controllers
         }
 
         [HttpPost]
-        public void Post(Order Order)
+        public void Post(OrderDto Order)
         {
             _IOrder.AddOrder(Order);
         }
 
         [HttpPut]
-        public void Put(Order Order)
+        public void Put(OrderDto Order)
         {
             _IOrder.UpdateOrderDetails(Order);
         }

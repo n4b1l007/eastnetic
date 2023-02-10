@@ -1,4 +1,5 @@
-﻿using eastnetic.Server.Interfaces;
+﻿using AutoMapper;
+using eastnetic.Server.Interfaces;
 using eastnetic.Server.Models;
 using eastnetic.Shared.Model;
 using Microsoft.EntityFrameworkCore;
@@ -8,19 +9,22 @@ namespace eastnetic.Server.Services
 {
     public class OrderManager : IOrder
     {
+        private readonly IMapper _mapper;
         private readonly DatabaseContext _dbContext = new();
 
-        public OrderManager(DatabaseContext dbContext)
+        public OrderManager(DatabaseContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
+            _mapper = mapper;
         }
 
         //To Get all Order details
-        public List<Order> GetOrderDetails()
+        public List<OrderDto> GetOrderDetails()
         {
             try
             {
-                return _dbContext.Orders.ToList();
+                var listOrders = _dbContext.Orders.ToList();
+                return _mapper.Map<List<OrderDto>>(listOrders);
             }
             catch
             {
@@ -29,11 +33,12 @@ namespace eastnetic.Server.Services
         }
 
         //To Add new Order record
-        public void AddOrder(Order Order)
+        public void AddOrder(OrderDto Order)
         {
             try
             {
-                _dbContext.Orders.Add(Order);
+                var model = _mapper.Map<Order>(Order);
+                _dbContext.Orders.Add(model);
                 _dbContext.SaveChanges();
             }
             catch
@@ -43,11 +48,12 @@ namespace eastnetic.Server.Services
         }
 
         //To Update the records of a particluar Order
-        public void UpdateOrderDetails(Order Order)
+        public void UpdateOrderDetails(OrderDto Order)
         {
             try
             {
-                _dbContext.Entry(Order).State = EntityState.Modified;
+                var model = _mapper.Map<Order>(Order);
+                _dbContext.Entry(model).State = EntityState.Modified;
                 _dbContext.SaveChanges();
             }
             catch
@@ -57,14 +63,15 @@ namespace eastnetic.Server.Services
         }
 
         //Get the details of a particular Order
-        public Order GetOrderData(int id)
+        public OrderDto GetOrderData(int id)
         {
             try
             {
                 Order? Order = _dbContext.Orders.Find(id);
                 if (Order != null)
                 {
-                    return Order;
+                    var dto = _mapper.Map<OrderDto>(Order);
+                    return dto;
                 }
                 else
                 {

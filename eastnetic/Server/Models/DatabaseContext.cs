@@ -1,4 +1,5 @@
-﻿using eastnetic.Shared.Model;
+﻿using eastnetic.Server.Services;
+using eastnetic.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace eastnetic.Server.Models
@@ -15,5 +16,7 @@ namespace eastnetic.Server.Models
         }
 
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Window> Windows { get; set; }
+        public virtual DbSet<SubElement> SubElements { get; set; }
     }
 }

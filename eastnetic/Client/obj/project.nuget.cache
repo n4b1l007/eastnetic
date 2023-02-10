@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5lgGf26pXYw9ZfCosbU7cYODZX9R3AzdfBP8jYFZrnHJ4Z89xkLRbBTRfflWHWIl+3ipRKLyUn9HJfvgWdLAIA==",
+  "dgSpecHash": "lNk7qQitS4JdWP0eD/o2Kh28NXhGf46xmRHaEJbjpdZKzjQxKsaC8FUVmO8Iif8RBrLyV/+ZQK042JE/3tNnIQ==",
   "success": true,
   "projectFilePath": "C:\\Nabil\\Personal\\eastnetic\\eastnetic\\Client\\eastnetic.Client.csproj",
   "expectedPackageFiles": [
@@ -29,6 +29,7 @@
     "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\microsoft.jsinterop\\7.0.2\\microsoft.jsinterop.7.0.2.nupkg.sha512",
     "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\microsoft.jsinterop.webassembly\\7.0.2\\microsoft.jsinterop.webassembly.7.0.2.nupkg.sha512",
+    "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\mudblazor\\6.1.8\\mudblazor.6.1.8.nupkg.sha512",
     "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\system.io.pipelines\\7.0.0\\system.io.pipelines.7.0.0.nupkg.sha512",
     "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\332-Jafrul Sadek\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",

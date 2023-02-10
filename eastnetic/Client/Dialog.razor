@@ -1,0 +1,26 @@
+﻿@using MudBlazor;
+@inject HttpClient Http
+
+<MudDialog>
+    <DialogContent>
+        <MudText>Do you really want to delete this records? This process cannot be undone.</MudText>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="Submit">Delete</MudButton>
+    </DialogActions>
+</MudDialog>
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    [Parameter] public string Controller { get; set; }
+
+    [Parameter] public int Id { get; set; }
+
+    private async void Submit()
+    {
+        await Http.DeleteAsync(@$"api/{Controller}/{Id}");
+        MudDialog.Close(DialogResult.Ok(true));
+    }
+    void Cancel() => MudDialog.Cancel();
+}

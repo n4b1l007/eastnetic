@@ -1,0 +1,89 @@
+﻿@page "/Windows"
+@using MudBlazor;
+@using System.Net.Http.Json
+@using eastnetic.Shared.DTO;
+@using eastnetic.Shared.Model
+@inject HttpClient httpClient
+@inject NavigationManager _nav
+@inject IDialogService DialogService
+<MudGrid>
+    <MudItem xs="12">
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick='() => _nav.NavigateTo("WindowAdd")'>
+            Add Window
+        </MudButton>
+    </MudItem>
+    <MudItem xs="12">
+        <MudTable Items="@WindowList" Dense="true" Hover="true" BWindowed="true" Striped="true" Filter="new Func<WindowDto,bool>(FilterFunc1)" @bind-SelectedItem="selectedItem1">
+            <ToolBarContent>
+                <MudText Typo="Typo.h6">Window List</MudText>
+                <MudSpacer />
+                <MudSpacer />
+                <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+            </ToolBarContent>
+            <HeaderContent>
+                <MudTh>Order</MudTh>
+                <MudTh>Quantity Of Windows</MudTh>
+                <MudTh>Total Sub Elements</MudTh>
+                <MudTh>Action</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Order">@context.Order</MudTd>
+                <MudTd DataLabel="QuantityOfWindows">@context.QuantityOfWindows</MudTd>
+                <MudTd DataLabel="TotalSubElements">@context.TotalSubElements</MudTd>
+                <MudTd DataLabel="Action">
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" OnClick='() => _nav.NavigateTo("Window/edit/" + context.Id)'></MudIconButton>
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" OnClick="() => Delete(context.Id)" />
+                </MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager />
+            </PagerContent>
+        </MudTable>
+
+    </MudItem>
+</MudGrid>
+
+@code {
+    private string searchString1 = "";
+    private WindowDto selectedItem1 = null;
+    private IEnumerable<WindowDto> WindowList = new List<WindowDto>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetWindows();
+    }
+
+    private async Task GetWindows()
+    {
+        WindowList = await httpClient.GetFromJsonAsync<List<WindowDto>>("api/Window");
+    }
+
+    private bool FilterFunc1(WindowDto Window) => FilterFunc(Window, searchString1);
+
+    private bool FilterFunc(WindowDto Window, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if (Window.Order.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        return false;
+    }
+
+    private async void Delete(int Id)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("Controller", "Window");
+        parameters.Add("Id", Id);
+
+        var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = DialogService.Show<Dialog>("Delete", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled)
+        {
+            await GetWindows();
+            StateHasChanged();
+        }
+    }
+}

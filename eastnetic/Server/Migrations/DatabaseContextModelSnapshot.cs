@@ -70,7 +70,7 @@ namespace eastnetic.Server.Migrations
 
                     b.HasIndex("WindowId");
 
-                    b.ToTable("SubElement");
+                    b.ToTable("SubElements");
                 });
 
             modelBuilder.Entity("eastnetic.Shared.Model.Window", b =>
@@ -91,7 +91,7 @@ namespace eastnetic.Server.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("Window");
+                    b.ToTable("Windows");
                 });
 
             modelBuilder.Entity("eastnetic.Shared.Model.SubElement", b =>

@@ -835,3 +835,7 @@ C:\Nabil\Personal\eastnetic\eastnetic\Client\obj\Debug\net7.0\eastnetic.Client.d
 C:\Nabil\Personal\eastnetic\eastnetic\Client\obj\Debug\net7.0\refint\eastnetic.Client.dll
 C:\Nabil\Personal\eastnetic\eastnetic\Client\obj\Debug\net7.0\eastnetic.Client.pdb
 C:\Nabil\Personal\eastnetic\eastnetic\Client\obj\Debug\net7.0\ref\eastnetic.Client.dll
+C:\Nabil\Personal\eastnetic\eastnetic\Client\bin\Debug\net7.0\wwwroot\_framework\MudBlazor.dll
+C:\Nabil\Personal\eastnetic\eastnetic\Client\bin\Debug\net7.0\wwwroot\_framework\MudBlazor.dll.gz
+C:\Nabil\Personal\eastnetic\eastnetic\Client\bin\Debug\net7.0\MudBlazor.dll
+C:\Nabil\Personal\eastnetic\eastnetic\Client\obj\Debug\net7.0\build-gz\+aSkJm6c.gz
