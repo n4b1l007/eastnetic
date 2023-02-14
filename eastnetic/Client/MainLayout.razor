@@ -1,6 +1,10 @@
 ﻿@using MudBlazor;
 @inherits LayoutComponentBase
-
+<style>
+    .navActive {
+        background-color: var(--mud-palette-action-default-hover);
+    }
+</style>
 <MudThemeProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
@@ -9,15 +13,16 @@
     <MudDrawerContainer Class="mud-height-full">
         <MudDrawer @bind-Open="@open" Elevation="0" Variant="@DrawerVariant.Persistent" Color="Color.Primary">
             <MudDrawerHeader>
-                <MudText Typo="Typo.h6">My App</MudText>
+                <MudText Typo="Typo.h6">Eastnetic</MudText>
             </MudDrawerHeader>
             <MudNavMenu>
-                <MudNavLink Icon="@Icons.Material.Filled.People" IconColor="Color.Inherit" Href="/Orders">Orders</MudNavLink>
-                <MudNavLink Icon="@Icons.Material.Filled.People" IconColor="Color.Inherit" Href="/Windows">Windows</MudNavLink>
+                <MudNavLink ActiveClass="navActive" Icon="@Icons.Material.Filled.People" IconColor="Color.Inherit" Href="/Orders">Orders</MudNavLink>
+                <MudNavLink ActiveClass="navActive" Icon="@Icons.Material.Filled.People" IconColor="Color.Inherit" Href="/Windows">Windows</MudNavLink>
+                <MudNavLink ActiveClass="navActive" Icon="@Icons.Material.Filled.People" IconColor="Color.Inherit" Href="/SubElements">Sub Element</MudNavLink>
             </MudNavMenu>
         </MudDrawer>
         <MudMainContent>
-            <MudPaper Height="100vh" Width="100vh">
+            <MudPaper Height="100vh">
                 <MudContainer Fixed="true">
                     @Body
                 </MudContainer>

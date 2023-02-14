@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
+using eastnetic.Client.Pages.Order;
+using eastnetic.Client.Pages.Window;
 using eastnetic.Server.Interfaces;
 using eastnetic.Server.Models;
 using eastnetic.Shared.DTO;
 using eastnetic.Shared.Model;
 using Microsoft.EntityFrameworkCore;
+using MudBlazor;
 using System.Collections.Generic;
 
 namespace eastnetic.Server.Services
@@ -26,16 +29,28 @@ namespace eastnetic.Server.Services
             {
                 var result = (from windo in _dbContext.Windows
                               join order in _dbContext.Orders on windo.OrderId equals order.Id
-                              select new WindowDto
+                              join subElement in _dbContext.SubElements on windo.Id equals subElement.WindowId into gj
+                              from subpet in gj.DefaultIfEmpty()
+                              select new
                               {
                                   Id = windo.Id,
+                                  Name = windo.Name,
                                   QuantityOfWindows = windo.QuantityOfWindows,
-                                  TotalSubElements = windo.TotalSubElements,
                                   OrderId = windo.OrderId,
-                                  Order = order.Name
+                                  Order = order.Name,
+                                  subElement = subpet.Id
+                              })
+                              .GroupBy(g => g.Id)
+                              .Select(s => new WindowDto
+                              {
+                                  Id = s.FirstOrDefault().Id,
+                                  Name = s.FirstOrDefault().Name,
+                                  QuantityOfWindows = s.FirstOrDefault().QuantityOfWindows,
+                                  OrderId = s.FirstOrDefault().OrderId,
+                                  Order = s.FirstOrDefault().Order,
+                                  TotalSubElements = s.Any(a => a.subElement == null) ? 0 : s.Count()
                               })
                               .ToList();
-
                 return result;
             }
             catch (Exception ex)

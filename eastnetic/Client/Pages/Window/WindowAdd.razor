@@ -14,6 +14,12 @@
 <MudCard>
     <MudForm Model="@model" @ref="@form">
         <MudCardContent>
+            <MudTextField @bind-Value="model.Name"
+                          For="@(() => model.Name)"
+                          Immediate="true"
+                          Label="Name"
+                          Required="true"
+                          RequiredError="Name is required!" />
             <MudSelect @bind-Value="model.OrderId"
                        For="@(() => model.OrderId)"
                        T="int" Label="Order" AnchorOrigin="Origin.BottomCenter">
@@ -62,15 +68,19 @@
 
     private async Task Submit()
     {
-        if (model.Id != 0)
+        await form.Validate();
+        if (form.IsValid)
         {
-            await Http.PutAsJsonAsync("api/Window", model);
+            if (model.Id != 0)
+            {
+                await Http.PutAsJsonAsync("api/Window", model);
+            }
+            else
+            {
+                await Http.PostAsJsonAsync("api/Window", model);
+            }
+            Cancel();
         }
-        else
-        {
-            await Http.PostAsJsonAsync("api/Window", model);
-        }
-        //Cancel();
     }
     public void Cancel()
     {

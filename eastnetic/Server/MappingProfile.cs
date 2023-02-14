@@ -14,7 +14,13 @@ namespace eastnetic.Server
                 .ForMember(m => m.Order, opt => opt.Ignore())
                 .ForMember(m => m.TotalSubElements, opt => opt.Ignore())
                 .ReverseMap();
-            CreateMap<Order, OrderDto>().ReverseMap();
+            CreateMap<WindowDto, Window>()
+                .ForMember(m => m.Order, opt => opt.Ignore())
+                .ForMember(m => m.TotalSubElements, opt => opt.Ignore());
+
+            CreateMap<SubElement, SubElementDto>().ReverseMap();
+            CreateMap<SubElementDto, SubElement>()
+                .ForMember(m => m.Window, opt => opt.Ignore());
         }
     }
 }

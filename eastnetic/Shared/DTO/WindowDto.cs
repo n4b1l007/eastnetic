@@ -9,6 +9,7 @@ namespace eastnetic.Shared.DTO
         public int Id { get; set; }
 
         public int OrderId { get; set; }
+        public string Name { get; set; }
         public string Order { get; set; } = string.Empty;
 
         public int QuantityOfWindows { get; set; }

@@ -52,15 +52,19 @@
 
     private async Task Submit()
     {
-        if (model.Id != 0)
+        await form.Validate();
+        if (form.IsValid)
         {
-            await Http.PutAsJsonAsync("api/Order", model);
+            if (model.Id != 0)
+            {
+                await Http.PutAsJsonAsync("api/Order", model);
+            }
+            else
+            {
+                await Http.PostAsJsonAsync("api/Order", model);
+            }
+            Cancel();
         }
-        else
-        {
-            await Http.PostAsJsonAsync("api/Order", model);
-        }
-        Cancel();
     }
     public void Cancel()
     {

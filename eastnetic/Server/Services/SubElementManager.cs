@@ -24,8 +24,18 @@ namespace eastnetic.Server.Services
         {
             try
             {
-                var listSubElements = _dbContext.SubElements.ToList();
-                return _mapper.Map<List<SubElementDto>>(listSubElements);
+                return (from subElmt in _dbContext.SubElements
+                        join win in _dbContext.Windows on subElmt.WindowId equals win.Id
+                        select new SubElementDto
+                        {
+                            Id = subElmt.Id,
+                            WindowId = subElmt.WindowId,
+                            Element = subElmt.Element,
+                            Type = subElmt.Type,
+                            Height = subElmt.Height,
+                            Width = subElmt.Width,
+                            Window = win.Name,
+                        }).ToList();
             }
             catch
             {

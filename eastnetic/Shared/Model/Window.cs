@@ -11,6 +11,8 @@ namespace eastnetic.Shared.Model
         [ForeignKey("Order")]
         public int OrderId { get; set; }
 
+        public string Name { get; set; }
+
         public int QuantityOfWindows { get; set; }
 
         [NotMapped]

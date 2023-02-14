@@ -21,12 +21,14 @@
                 <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
             </ToolBarContent>
             <HeaderContent>
+                <MudTh>Name</MudTh>
                 <MudTh>Order</MudTh>
                 <MudTh>Quantity Of Windows</MudTh>
                 <MudTh>Total Sub Elements</MudTh>
                 <MudTh>Action</MudTh>
             </HeaderContent>
             <RowTemplate>
+                <MudTd DataLabel="Name">@context.Name</MudTd>
                 <MudTd DataLabel="Order">@context.Order</MudTd>
                 <MudTd DataLabel="QuantityOfWindows">@context.QuantityOfWindows</MudTd>
                 <MudTd DataLabel="TotalSubElements">@context.TotalSubElements</MudTd>
